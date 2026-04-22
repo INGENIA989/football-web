@@ -142,3 +142,65 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 refreshBtn.addEventListener('click', fetchLiveMatches);
+/**
+ * Obtiene los máximos goleadores de una liga específica
+ */
+async function fetchTopScorers(leagueId, season) {
+    const scorersContainer = document.getElementById('top-scorers-list');
+    
+    try {
+        // Hacemos la petición al endpoint de goleadores
+        const response = await fetch(`https://v3.football.api-sports.io/players/topscorers?league=${leagueId}&season=${season}`, {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (data.response && data.response.length > 0) {
+            renderTopScorers(data.response);
+        } else {
+            scorersContainer.innerHTML = '<div class="loader">No se encontraron datos para esta liga.</div>';
+        }
+    } catch (error) {
+        console.error("Error al obtener goleadores:", error);
+        scorersContainer.innerHTML = '<div class="loader">Error de conexión al cargar jugadores.</div>';
+    }
+}
+
+/**
+ * Renderiza la lista de goleadores en el HTML
+ */
+function renderTopScorers(players) {
+    const scorersContainer = document.getElementById('top-scorers-list');
+    scorersContainer.innerHTML = ''; // Limpiamos el texto de "Cargando..."
+
+    // Nos quedamos solo con los 5 primeros para que quede visualmente limpio
+    const top5 = players.slice(0, 5);
+
+    top5.forEach((item, index) => {
+        const player = item.player;
+        const stats = item.statistics[0]; // Tomamos las estadísticas del torneo principal
+        
+        const scorerHTML = `
+            <div class="scorer-item">
+                <div class="scorer-info">
+                    <span class="scorer-rank">${index + 1}</span>
+                    <img src="${player.photo}" alt="${player.name}" class="scorer-photo" onerror="this.src='https://via.placeholder.com/45?text=P'">
+                    <div>
+                        <div class="scorer-name">${player.name}</div>
+                        <div class="scorer-team">${stats.team.name}</div>
+                    </div>
+                </div>
+                <div class="scorer-goals">
+                    ${stats.goals.total} <span style="font-size: 0.8rem; color: var(--text-secondary);">Goles</span>
+                </div>
+            </div>
+        `;
+        
+        scorersContainer.insertAdjacentHTML('beforeend', scorerHTML);
+    });
+}
