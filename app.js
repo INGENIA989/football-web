@@ -1,5 +1,5 @@
 // Configuración de API (Para usar en producción, regístrate en API-Football vía RapidAPI)
-const API_KEY = '8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969'; // Reemplaza con tu clave real
+const API_KEY = '8const API_KEY = '8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969';'; // Reemplaza con tu clave real
 const API_HOST = 'v3.football.api-sports.io';
 const API_URL = 'https://v3.football.api-sports.io/fixtures?live=all';
 
