@@ -1,1 +1,34 @@
-<h1>FUTBOL KING</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fútbol Live Stats Pro ⚽</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>Fútbol<span>Pro</span></h1>
+        </div>
+        <div class="live-indicator">
+            <span class="dot-pulse"></span>
+            <span>EN DIRECTO</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="section-header">
+            <h2>Partidos Destacados</h2>
+            <button id="refresh-btn" class="btn-refresh">↻ Actualizar</button>
+        </header>
+        
+        <div id="matches-grid" class="matches-grid">
+            <div class="loader" id="loader">Cargando estadísticas...</div>
+            </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
