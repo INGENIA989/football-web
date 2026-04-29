@@ -14,7 +14,7 @@ async function fetchLiveMatches() {
     try {
         matchesGrid.innerHTML = '<div class="loader">Actualizando estadísticas...</div>';
 
-        const response = await fetch(API_URL, {
+const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
                 'x-rapidapi-host': API_HOST,
