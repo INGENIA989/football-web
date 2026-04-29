@@ -30,11 +30,31 @@
     </main>
 <div class="container">
     <header class="section-header" style="margin-top: 2rem;">
-        <h2>Top Goleadores (La Liga)</h2>
+        <h2>Top Goleadores por Liga</h2>
     </header>
     
-    <div id="top-scorers-list" class="scorers-container">
-        <div class="loader">Cargando goleadores...</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <div class="scorers-container">
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿</h3>
+            <div id="scorers-39">
+                <div class="loader">Cargando Premier...</div>
+            </div>
+        </div>
+
+        <div class="scorers-container">
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">La Liga 🇪🇸</h3>
+            <div id="scorers-140">
+                <div class="loader">Cargando La Liga...</div>
+            </div>
+        </div>
+ <div class="scorers-container">
+            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Champions League 🇪🇺</h3>
+            <div id="scorers-2">
+                <div class="loader">Cargando Champions...</div>
+            </div>
+        </div>
+
     </div>
 </div>
     <script src="app.js"></script>
