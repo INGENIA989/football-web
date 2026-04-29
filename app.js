@@ -16,7 +16,7 @@ async function fetchLiveMatches() {
         matchesGrid.innerHTML = '<div class="loader">Actualizando estadísticas...</div>';
 
         // Intentar llamada real a la API
-        if (API_KEY !== 'TU_API_KEY_AQUI') {
+        if (8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969') {
             const response = await fetch(API_URL, {
                 method: 'GET',
                 headers: {
