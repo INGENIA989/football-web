@@ -1,4 +1,5 @@
-
+// Configuración de API
+const API_KEY = '8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969';
 const API_HOST = 'v3.football.api-sports.io';
 const API_URL = 'https://v3.football.api-sports.io/fixtures?live=all';
 
