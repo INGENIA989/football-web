@@ -8,38 +8,30 @@ const matchesGrid = document.getElementById('matches-grid');
 const refreshBtn = document.getElementById('refresh-btn');
 
 /**
- * Función principal para obtener los datos.
- * Incluye un fallback (datos simulados) por si no hay API Key configurada.
+ * Función principal para obtener los datos de partidos en vivo.
  */
 async function fetchLiveMatches() {
     try {
         matchesGrid.innerHTML = '<div class="loader">Actualizando estadísticas...</div>';
 
-        // Intentar llamada real a la API
-        if (8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969') {
-            const response = await fetch(API_URL, {
-                method: 'GET',
-                headers: {
-                    'x-rapidapi-host': API_HOST,
-                    'x-rapidapi-key': API_KEY
-                }
-            });
-            const data = await response.json();
-            renderMatches(data.response);
-        } else {
-            // FALLBACK: Datos simulados para demostración
-            console.warn("Usando datos simulados. Configura tu API_KEY para datos reales.");
-            setTimeout(() => renderMatches(getMockData()), 800);
-        }
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
+            }
+        });
+        
+        const data = await response.json();
+        renderMatches(data.response);
+        
     } catch (error) {
         console.error("Error al obtener los partidos:", error);
         matchesGrid.innerHTML = '<div class="loader">Error de conexión. Intenta nuevamente.</div>';
     }
 }
 
-/**
- * Renderiza el array de partidos en el DOM
- */
+// A partir de aquí sigue tu función function renderMatches(matches)
 function renderMatches(matches) {
     matchesGrid.innerHTML = ''; // Limpiar grid
 
