@@ -16,9 +16,9 @@ async function fetchLiveMatches() {
 
 const response = await fetch(API_URL, {
             method: 'GET',
-            headers: {
-                'x-rapidapi-host': API_HOST,
-                'x-rapidapi-key': API_KEY
+    headers: {
+        'x-rapidapi-host': API_HOST,
+        'x-rapidapi-key': API_KEY
             }
         });
         
