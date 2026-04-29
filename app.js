@@ -135,13 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 refreshBtn.addEventListener('click', fetchLiveMatches);
 /**
- * Obtiene los máximos goleadores de una liga específica
+ * Obtiene los máximos goleadores y los pone en su contenedor correspondiente
  */
-async function fetchTopScorers(leagueId, season) {
-    const scorersContainer = document.getElementById('top-scorers-list');
+async function fetchTopScorers(leagueId, season, containerId) {
+    const container = document.getElementById(containerId);
     
     try {
-        // Hacemos la petición al endpoint de goleadores
         const response = await fetch(`https://v3.football.api-sports.io/players/topscorers?league=${leagueId}&season=${season}`, {
             method: 'GET',
             headers: {
@@ -153,29 +152,28 @@ async function fetchTopScorers(leagueId, season) {
         const data = await response.json();
         
         if (data.response && data.response.length > 0) {
-            renderTopScorers(data.response);
+            renderTopScorers(data.response, containerId);
         } else {
-            scorersContainer.innerHTML = '<div class="loader">No se encontraron datos para esta liga.</div>';
+            container.innerHTML = '<div class="loader">No hay datos disponibles.</div>';
         }
     } catch (error) {
-        console.error("Error al obtener goleadores:", error);
-        scorersContainer.innerHTML = '<div class="loader">Error de conexión al cargar jugadores.</div>';
+        console.error(`Error al obtener goleadores liga ${leagueId}:`, error);
+        container.innerHTML = '<div class="loader">Error al cargar jugadores.</div>';
     }
 }
 
 /**
- * Renderiza la lista de goleadores en el HTML
+ * Renderiza la lista de goleadores
  */
-function renderTopScorers(players) {
-    const scorersContainer = document.getElementById('top-scorers-list');
-    scorersContainer.innerHTML = ''; // Limpiamos el texto de "Cargando..."
+function renderTopScorers(players, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; 
 
-    // Nos quedamos solo con los 5 primeros para que quede visualmente limpio
     const top5 = players.slice(0, 5);
 
     top5.forEach((item, index) => {
         const player = item.player;
-        const stats = item.statistics[0]; // Tomamos las estadísticas del torneo principal
+        const stats = item.statistics[0];
         
         const scorerHTML = `
             <div class="scorer-item">
@@ -193,6 +191,18 @@ function renderTopScorers(players) {
             </div>
         `;
         
-        scorersContainer.insertAdjacentHTML('beforeend', scorerHTML);
+        container.insertAdjacentHTML('beforeend', scorerHTML);
     });
 }
+
+// ESTA ES LA PARTE QUE ACTIVA TODO AL CARGAR LA PÁGINA
+document.addEventListener('DOMContentLoaded', () => {
+    fetchLiveMatches();
+    
+    // Llamamos a las 3 ligas con sus IDs correspondientes (Temporada 2025)
+    fetchTopScorers(39, 2025, 'scorers-39');   // Premier
+    fetchTopScorers(140, 2025, 'scorers-140'); // La Liga
+    fetchTopScorers(2, 2025, 'scorers-2');     // Champions
+    
+    setInterval(fetchLiveMatches, 60000);
+});
