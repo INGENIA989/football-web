@@ -1,6 +1,6 @@
 // 1. Configuración
 const API_KEY = '8ea61a7eb7msh4472a4908b221eep188f6ajsn5a409dd0c969';
-const API_HOST = 'api-football-v1.p.rapidapi.com'; // <-- ¡Este es el servidor correcto!
+const api-football-v1.p.rapidapi.com = 'api-football-v1.p.rapidapi.com'; // <-- ¡Este es el servidor correcto!
 const LEAGUE_ID = 140; // La Liga
 const SEASON = 2023;
 
