@@ -3,60 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fútbol Live Stats Pro ⚽</title>
+    <title>La Liga - Dashboard Estadísticas</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <h1>Fútbol<span>Pro</span></h1>
-        </div>
-        <div class="live-indicator">
-            <span class="dot-pulse"></span>
-            <span>EN DIRECTO</span>
-        </div>
+    <header class="main-header">
+        <h1>La Liga 🇪🇸</h1>
+        <p>Dashboard de Resultados y Estadísticas</p>
     </header>
 
     <main class="container">
-        <header class="section-header">
-            <h2>Partidos Destacados</h2>
-            <button id="refresh-btn" class="btn-refresh">↻ Actualizar</button>
-        </header>
-        
-        <div id="matches-grid" class="matches-grid">
-            <div class="loader" id="loader">Cargando estadísticas...</div>
+        <section class="section">
+            <h2>Últimos Resultados</h2>
+            <div id="matches-grid" class="matches-grid">
+                <div class="loader">Buscando últimos partidos...</div>
             </div>
+        </section>
+
+        <section class="section">
+            <h2>Top Jugadores</h2>
+            <div class="scorers-container" id="scorers-list">
+                <div class="loader">Cargando estadísticas detalladas...</div>
+            </div>
+        </section>
     </main>
-<div class="container">
-    <header class="section-header" style="margin-top: 2rem;">
-        <h2>Top Goleadores por Liga</h2>
-    </header>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-        
-        <div class="scorers-container">
-            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿</h3>
-            <div id="scorers-39">
-                <div class="loader">Cargando Premier...</div>
-            </div>
-        </div>
 
-        <div class="scorers-container">
-            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">La Liga 🇪🇸</h3>
-            <div id="scorers-140">
-                <div class="loader">Cargando La Liga...</div>
-            </div>
-        </div>
- <div class="scorers-container">
-            <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Champions League 🇪🇺</h3>
-            <div id="scorers-2">
-                <div class="loader">Cargando Champions...</div>
-            </div>
-        </div>
-
-    </div>
-</div>
-    <script src="app.js"></script>
+    <script src="app.js?v=5"></script>
 </body>
 </html>
