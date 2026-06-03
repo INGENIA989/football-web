@@ -4,10 +4,6 @@ const API_HOST = 'api-football-v1.p.rapidapi.com';
 const LEAGUE_ID = 140; 
 const SEASON = 2023;
 
-// 2. Elementos del DOM
-const matchesGrid = document.getElementById('matches-grid');
-const scorersList = document.getElementById('scorers-list');
-
 // 3. Función para últimos partidos
 async function fetchLatestMatches() {
     try {
